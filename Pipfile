@@ -13,6 +13,8 @@ markdown = "*"
 scipy = "*"
 plotly = "*"
 pyinstaller = "*"
+pandas = "*"
+xlrd = "*"
 
 [requires]
 python_version = "3.8"
