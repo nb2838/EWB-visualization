@@ -1,3 +1,5 @@
+from validation import validate
+
 import re
 import pandas as pd 
 
@@ -62,5 +64,12 @@ def get_map(filename: str) -> Map:
     Returns a map
     map_object = Map()
     map_object.df = get_dataframe(filename)
+    validate(map_object.df)
     return map_object
         
+
+
+
+
+    
+    
