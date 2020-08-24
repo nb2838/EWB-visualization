@@ -2,7 +2,7 @@
 
 import pandas as pd
 from datetime import datetime
-
+from typing import List
 
 def validate(df: pd.DataFrame)-> bool:
     """
@@ -37,7 +37,7 @@ def validate(df: pd.DataFrame)-> bool:
 
 
 
-def are_valid_coord(arr: List[str,int]) -> bool:
+def are_valid_coord(arr: List[str]) -> bool:
     """ Assumes that arr is list of strings or integers
     Returns True if every value in the list can be converted 
     to a number between -90 and 90. Returns False otherwise."""

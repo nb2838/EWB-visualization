@@ -1,4 +1,4 @@
-from validation import validate
+from ewb_mappy.validation import validate
 
 import re
 import pandas as pd 
@@ -25,7 +25,7 @@ def determine_extension(filename: str) -> str:
     Returns type of extension constant  associated with a Filename.
     If Extension is not supperted IOError is raised.
     """
-    name_pattern = r'[\w\s_]+'
+    name_pattern = r'.*'
     excel_reg = re.compile(name_pattern + r'.(xls|xlsx|xlsm|xlsb|xls)$')
     csv_reg = re.compile(name_pattern + r'.csv$')
     extension = None
@@ -61,7 +61,7 @@ def get_map(filename: str) -> Map:
     """"
     Returns a map object read from a csv or excel file
     """
-    Returns a map
+
     map_object = Map()
     map_object.df = get_dataframe(filename)
     validate(map_object.df)
