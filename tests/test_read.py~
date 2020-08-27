@@ -1,0 +1,22 @@
+import os
+
+import pytest
+
+from ewb_mappy import validation as v
+from ewb_mappy import read as r
+
+CURRENT_FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+GOOD_FILE_PATH = os.path join(CURRENT_FILE_PATH, 'test_files/good_tables')
+BAD_FILE_PATH = os.path.join(CURRENT_FILE_PATH, 'test_files/bad_tables')
+
+class testDataValidation:
+    
+    def test_invalid_raise_error(self):
+        """Test that verifies invalid files raise an error"""
+        bad_files = os.listdir(BAD_FILE_PATH)
+        for filename in bad_files:
+            with pytest.raises(ValueError):
+                test_map = r.get_map(filename)
+        
+        
+        
