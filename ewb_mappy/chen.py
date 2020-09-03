@@ -43,17 +43,19 @@
 
 # Chen
 """
-input:path to the file with layer information in csv/xlsx format
+input:path to the file with layer information in csv/xlsx format, e.g. 'name_of_layer,color_of_layer.xlsx'
+        note that the name_of_layer should not contain comma
 output:a EWBLayer object aggregating layer information, which will in turn be processed by get_map
 functionality: process excel/csv information into folium layer
 """
 def get_layer(filename: str) -> EWBLayer:
     map_df = get_dataframe(filename)
     name = re.split('/', filename)[-1]
-    output = re.split(',|_|-|\\.',name.replace(' ', ''))
+    output = re.split(',|\\.',name.replace(' ', ''))
     if len(output) != 3:
-        raise ValueError(f"The filename should be <layer name>_<layer color>.csv/xlsx, received filename {name}")
+        raise ValueError(f"The filename should be <layer name>,<layer color>.csv/xlsx, received filename {name}")
     layername, color, _ = output
+    color = color.lower()
     layer_object = EWBLayer(layername, color, map_df)
 
     for row in map_df.itertuples():

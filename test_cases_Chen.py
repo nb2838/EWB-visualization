@@ -10,15 +10,18 @@ def test_get_layer():
 	filestring = "YellowEWB.csv" (without such file) - FileNotFoundError: [Errno 2] File b'YellowEWB.csv' does not exist: b'YellowEWB.csv'
 	filestring = "testYellow.csv" (wrong naming convention) - ValueError: The file name should be <layer name>_<layer color>.csv/xlsx, 
 																received filename testYellow.csv
+	filestring = "Surveyees random_orange.xlsx" (wrong delimiter) -  ValueError: The filename should be <layer name>,<layer color>.csv/xlsx, 
+																received filename Surveyees random_orange.xlsx
 
 	GOOD CASES
-	filestring = "Surveyees,Yellow.csv" - UserWarning: color argument of Icon should be one of: {'green', 'beige', 'red', 'blue', 'black', 'lightgreen', 'darkred', 'white', 'gray', 'lightblue', 'purple', 'lightred', 'orange', 'darkblue', 'darkpurple', 'lightgray', 'darkgreen', 'pink', 'cadetblue'}.
+	filestring = "Surveyees,Yellow.csv" - UserWarning: color argument of Icon should be one of: {'green', 'beige', 'red', 'blue', 'black', 
+											'lightgreen', 'darkred', 'white', 'gray', 'lightblue', 'purple', 'lightred', 'orange', 'darkblue', 
+											'darkpurple', 'lightgray', 'darkgreen', 'pink', 'cadetblue'}.
     icon = folium.Icon(icon=icon, color=color, prefix='fa')
-    filestring = "Surveyees_orange.xlsx" - pass
+    
 	"""
-	filestring = "./files/Surveyees_orange.xlsx"
+	filestring = "./files/Surveyees random, Orange.xlsx"
 	result = get_layer(filestring)
-	print(type(result))
 	assert type(result) == EWBLayer
 
 def test_recenter():
@@ -31,7 +34,7 @@ def test_recenter():
 	string = "town" - default hardcoded location
 	string = "test" - existing layer name
 	"""
-	sampleMap = get_map(['./files/Surveyees_orange.xlsx', './files/test, Yellow.csv'])
+	sampleMap = get_map(['./files/Surveyees random, Orange.xlsx', './files/test, Yellow.csv'])
 	sampleMap.recenter("test")
 
 
