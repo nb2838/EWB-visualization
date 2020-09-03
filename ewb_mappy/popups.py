@@ -23,6 +23,29 @@ import folium
 
 # add markers with descriptive popups for each landmark in the layer
 def make_popups(map, lat, lon, title, date, description, icon, color):
+    """
+    Adds a popup with the specified information & styling attributes to the data layer
+    at the geographical location dictated by the latitude and longitude coordinates.
+    
+    Parameters
+    ----------
+    map : Map (folium)
+        map to be displayed
+    lat : float
+        latitude coordinate (decimal notation)
+    lon : float
+        longitude coordinate (decimal notation)
+    title : string
+        name of the datapoint (to be displayed by the tooltip)
+    date : string
+        date associated with the datapoint
+    description : string
+        description of the datapoint
+    icon : string
+        icon to be displayed in the popup pin
+    color : string
+        color of the popup pin
+    """
     folium.Marker(
         location = [lat, lon],
         icon = folium.Icon(icon=icon, color=color),
