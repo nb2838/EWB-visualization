@@ -4,7 +4,19 @@ from datetime import timedelta, datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+'''
+Paramenters: df of map layer data 
+Will convert values in mm/dd/YYYY, mm/dd/yy, mm-dd-YYYY, mm-dd-yy string to dt
+Will also accept dates that are already in the datetime type
+If date is in incorrect format, will print out an error message
+returns a copy of the map dataframe, with added columns that have the date in proper datetime and date format
+original df remains unchanged
 
+
+
+
+
+''''
 def date_val(df):
     df_copy =df.loc[:]
     
